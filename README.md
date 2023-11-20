@@ -3,7 +3,6 @@ Welcome to the evaluation and analysis Glossary for LLM360!
 
 To better observe and understand how our models develop and evolve over the training process, we introduce this glossary to provide in-depth analysis from many different aspects and hopefully it can faciliate research in the future. We selected 10 samples out of 360, there are checkpoint 35, 71, 107, 143, 179, 215, 251, 287, 323, 359. 
 
-[[_TOC_]]
 ## Table of Contents
 - [Analysis360](#analysis360)
   - [Table of Contents](#table-of-contents)
