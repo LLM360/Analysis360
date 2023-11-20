@@ -16,7 +16,7 @@ To better observe and understand how our models develop and evolve over the trai
 |--------------------|-------------:|-------------:|-------------:|-------------:|------------:|-----------:|-------------:|-------------:|-------------:|
 | Winogrande         | 0.5856353591 | 0.6045777427 | 0.6329913181 | 0.6227308603 | 0.636148382 | 0.63851618 | 0.6432517758 | 0.6527229676 | 0.6614048934 |
 
-![Winogrande](/docs/imgs/winogrande.png "winogrande")
+<img src="./docs/imgs/winogrande.png" width="80%" height="80%">
 
 We observed that overall the winogrande scores are increasing, indicating that our models are doing better and better jobs at commonsense reasoning, despite there's a drop on ckpt143.
 
