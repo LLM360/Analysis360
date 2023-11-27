@@ -46,7 +46,12 @@ def toxic_detection(args):
             return_dict_in_generate=True,
         )
         generate_ids = outputs["sequences"]
-        print(pred_label = output[-1])
+        output = tokenizer.batch_decode(
+            generate_ids,
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False
+        )[0]
+        print(output[-1])
         exit()
 
 
