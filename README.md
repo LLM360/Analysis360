@@ -16,17 +16,27 @@
 </p>
 Welcome to LLM360! 
 
-This repo contains all the code that we used for model evaluation and analysis.
-
-We use this repo as the single source of truth for all evaluation metrics and provide in-depth analysis from many different angles.
+This repo contains all the code that we used for model evaluation and analysis. It serves as the single source of truth for all evaluation metrics and provides in-depth analysis from many different angles.
 
 ## Our Approach
-There are a lot of metrics included, we not only measure models' ability by running common evaluation benchmarks like MMLU, Hellaswag but also dive deep into other areas like toxicity and bias. 
-Moreover, to better observe and understand how our models develop and evolve over the training process, we sampled a few checkpoints from our model pool with fixed intervals for trend analysis.
-All the results are published on our wandb project page, we will keep updating it as more metrics and evaluations are coming out, stay tuned!
+We run evaluations on a variety of benchmarks, including the conventional benchmarks like MMLU, Hellaswag, user-preference aligned benchmarks like MT-bench, long-context evaluations like LongEval, and additional studies on safety benchmarks for truthfulness, toxicity and bias. Moreover, we report results on the model samples we preselected from a suite of LLMs where they all trained on same data seen in the exact same order to better observe and understand how our models develop and evolve over the training process. We also provide public access to all checkpoints, all wandb dashboards for detailed training and evaluation curves.
 
 ## List of Analysis
-introduction
+Here's a full list of analysis/metrics we have collected so far. We will keep expanding the list as our study proceeds, please stay tuned on the upcoming changes!
+| Analysis/Metrics       | Description                                                                                                                                                 | Backend Support       |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| mmlu                   | a test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more | lm-evaluation-harness |
+| race                   | a test to measure reading comprehension ablity                                                                                                              |                       |
+| arc_challenge          | a set of grade-school science questions                                                                                                                     | lm-evaluation-harness |
+| boolq                  |                                                                                                                                                             |                       |
+| hellaswag              | a test of commonsense inference                                                                                                                             | lm-evaluation-harness |
+| openbookqa             |                                                                                                                                                             |                       |
+| piqa                   |                                                                                                                                                             |                       |
+| siqa                   |                                                                                                                                                             |                       |
+| winogrande             | an adversarial and difficult Winograd benchmark at scale, for commonsense reasoning                                                                         | lm-evaluation-harness |
+| crowspairs             |                                                                                                                                                             |                       |
+| truthfulqa             | a test to measure a model's propensity to reproduce falsehoods commonly found online                                                                        | lm-evaluation-harness |
+| vicuna-instructions-80 | 80 questions cover 9 tasks including generic instructions, knowledge, math, Fermi, counterfactual, roleplay, generic, coding and writing common-sense.      |                       |
 ### Common LM eval metrics:
 - link to code
 - link to wandb
