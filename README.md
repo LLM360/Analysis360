@@ -23,20 +23,22 @@ We run evaluations on a variety of benchmarks, including the conventional benchm
 
 ## List of Analysis
 Here's a full list of analysis/metrics we have collected so far. We will keep expanding the list as our study proceeds, please stay tuned on the upcoming changes!
-| Analysis/Metrics       | Description                                                                                                                                                 | Backend Support       |
-|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| mmlu                   | a test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more | lm-evaluation-harness |
-| race                   | a test to measure reading comprehension ablity                                                                                                              |                       |
-| arc_challenge          | a set of grade-school science questions                                                                                                                     | lm-evaluation-harness |
-| boolq                  |                                                                                                                                                             |                       |
-| hellaswag              | a test of commonsense inference                                                                                                                             | lm-evaluation-harness |
-| openbookqa             |                                                                                                                                                             |                       |
-| piqa                   |                                                                                                                                                             |                       |
-| siqa                   |                                                                                                                                                             |                       |
-| winogrande             | an adversarial and difficult Winograd benchmark at scale, for commonsense reasoning                                                                         | lm-evaluation-harness |
-| crowspairs             |                                                                                                                                                             |                       |
-| truthfulqa             | a test to measure a model's propensity to reproduce falsehoods commonly found online                                                                        | lm-evaluation-harness |
-| vicuna-instructions-80 | 80 questions cover 9 tasks including generic instructions, knowledge, math, Fermi, counterfactual, roleplay, generic, coding and writing common-sense.      |                       |
+| Analysis/Metrics       | Description                                                                                                                                                 |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| mmlu                   | a test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more |
+| race                   | a test to measure reading comprehension ablity                                                                                                              |
+| arc_challenge          | a set of grade-school science questions                                                                                                                     |
+| boolq                  | a question answering dataset for yes/no questions containing 15942 examples                                                                                 |
+| hellaswag              | a test of commonsense inference                                                                                                                             |
+| openbookqa             | a question-answering dataset modeled after open book exams for assessing human understanding of a subject                                                   |
+| piqa                   | a test to measure physical commonsense and reasoning                                                                                                        |
+| siqa                   | a test to measure commonsense reasoning about social interactions                                                                                           |
+| winogrande             | an adversarial and difficult Winograd benchmark at scale, for commonsense reasoning                                                                         |
+| crowspairs             | a challenge set for evaluating what language models (LMs) on their tendency to generate biased outputs                                                      |
+| truthfulqa             | a test to measure a model's propensity to reproduce falsehoods commonly found online                                                                        |
+| vicuna-instructions-80 | 80 questions cover 9 tasks including generic instructions, knowledge, math, Fermi, counterfactual, roleplay, generic, coding and writing common-sense.      |
+| bold                   | a test to evaluate fairness in open-ended language generation in English language                                                                           |
+| toxigen                | a test to classify input text as either hateful or not hateful                                                                                              |
 ### Common LM eval metrics:
 - link to code
 - link to wandb
