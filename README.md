@@ -23,7 +23,7 @@ We run evaluations on a variety of benchmarks, including the conventional benchm
 
 ## List of Analysis and Metrics
 Here's a full list of analysis/metrics we have collected so far. We will keep expanding the list as our study proceeds, please stay tuned on the upcoming changes!
-| Analysis               | Description                                                                                                                                                 | Source                                    |
+| Metric               | Description                                                                                                                                                 | Source                                    |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
 | mmlu                   | a test to measure a text model's multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more | https://arxiv.org/abs/2009.03300          |
 | race                   | a test to measure reading comprehension ablity                                                                                                              | https://arxiv.org/abs/1704.04683          |
