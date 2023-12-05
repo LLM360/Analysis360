@@ -7,7 +7,7 @@
 ---
 
 <p align="center">
-   <a href="https://github.com/LLM360/Analysis360/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license"></a>
+   <a href="https://github.com/LLM360/Analysis360/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="license"></a>
 </p>
 <p align="center">
   <a href="">Blogpost[Amber]</a> •
