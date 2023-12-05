@@ -10,15 +10,15 @@
    <a href="https://github.com/LLM360/Analysis360/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="license"></a>
 </p>
 <p align="center">
-  <a href="">Blogpost[Amber]</a> •
+  <a href="https://huggingface.co/LLM360/Amber">HF[Amber]</a> •
   <a href="https://wandb.ai/llm360/Amber">wandb dashboard[Amber]</a> •
-  <a href="">Blogpost[CrystalCoder]</a> •
+  <a href="https://huggingface.co/LLM360/CrystalCoder">HF[CrystalCoder]</a> •
   <a href="https://wandb.ai/llm360/CrystalCoder">wandb dashboard[CrystalCoder]</a> •
   <a href="">Publication</a>
 </p>
-Welcome to LLM360!
+Welcome to Analysis360!
 
-This repo contains all the code that we used for model evaluation and analysis. It serves as the single source of truth for all evaluation metrics and provides in-depth analysis from many different angles.
+This repo contains all the code that we used for model evaluation and analysis. It serves as the single source of truth for all evaluation metrics and provides in-depth analysis from many different angles. Feel free to click on the links above to have a quick glance about the LLM360 project and experiments' data.
 
 ## Our Approach 
 
@@ -26,7 +26,7 @@ We run evaluations on a variety of benchmarks, including the conventional benchm
 
 ## List of Analysis and Metrics
 
-Here's a full list of analysis/metrics we have collected so far. We will keep expanding the list as our study proceeds, please stay tuned on the upcoming changes!
+Here's a full list of analysis/metrics we have collected so far. For each model we release, at this point, Amber and CrystalCoder, we put down the links to specific wandb reports if the evaluation is done. Please refer to model cards([Amber](https://huggingface.co/LLM360/Amber), [CrystalCoder](https://huggingface.co/LLM360/CrystalCoder)) for any terms or technology you find unfamiliar. We will keep updating and expanding the list as our study proceeds, please stay tuned on the upcoming changes!
 | Metrics/Analysis                                                           | Description                                                                                                                                                 |                                               Amber                                              |                                                                                                                       CrystalCoder                                                                                                                       |
 |----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | [mmlu](https://arxiv.org/abs/2009.03300)                                   | a test to measure a text model’s multitask accuracy. The test covers 57 tasks including elementary mathematics, US history, computer science, law, and more |    [&check;](https://wandb.ai/llm360/Amber/reports/mmlu-23-12-05-12-00-27---Vmlldzo2MTc1Njkx)    |             0 shot[&check;](https://wandb.ai/llm360/CrystalCoder/reports/MMLU-0-shot-23-12-05-12-26-58---Vmlldzo2MTc1OTIw)<br>5 shot[&check;](https://wandb.ai/llm360/CrystalCoder/reports/MMLU-5-shot-23-12-05-12-31-30---Vmlldzo2MTc1OTgy)             |
@@ -50,4 +50,4 @@ Here's a full list of analysis/metrics we have collected so far. We will keep ex
 | [bold](https://arxiv.org/abs/2101.11718)                                   | a test to evaluate fairness in open-ended language generation in English language                                                                           |                                                                                                  |                                                                                                                                                                                                                                                          |
 | [memorization and token orders analysis](https://arxiv.org/abs/2202.07646) | an analysis to understand model's memorization abilities                                                                                                    |                                                                                                  |                                                                                                                                                                                                                                                          |
 ## How to reproduce our results
-Most of our evaluations are built based on [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)'s core `lm_eval` module. We reused the metrics that were supported by harness and added in our own to support more. Please follow the instructions [here](./harness/README.md) to get started. For any metric that's not included, users should be able to find a dedicated folder for that metric in the root level of the repo and follow the instructions there.
+Most of our evaluations are built based on [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)'s core `lm_eval` module. We reused the metrics that were supported by harness and added in our own to support more. Please follow the instructions [here](./harness/README.md) to get started. For any metric that's not included in the harness folder, users should be able to find a dedicated folder for that metric in the root level of the repo and follow the instructions there. Note, we are still working on getting code consolidated and uploaded so please wait for future releases to fill out the missing gaps.
