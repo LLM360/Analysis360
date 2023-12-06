@@ -22,7 +22,10 @@ This repo contains all the code that we used for model evaluation and analysis. 
 
 ## Our Approach 
 
-We run evaluations on a variety of benchmarks, including the conventional benchmarks like MMLU, Hellaswag, user-preference aligned benchmarks like MT-bench, long-context evaluations like LongEval, and additional studies on safety benchmarks for truthfulness, toxicity and bias. Moreover, we report results on the model samples we preselectedfrom a suite of LLMs where they all trained on same data seen in the exact same order to better observe and understand how our models develop and evolve over the training process. We also provide public access to all checkpoints, all code and all wandb dashboards for detailed training and evaluation curves.
+We run evaluations on a variety of benchmarks, including the conventional benchmarks like MMLU, Hellaswag, user-preference aligned benchmarks like MT-bench, long-context evaluations like LongEval, and additional studies on safety benchmarks for truthfulness, toxicity and bias. Moreover, we report results on the model samples we preselectedfrom a suite of LLMs where they all trained on same data seen in the exact same order to better observe and understand how our models develop and evolve over the training process. We also provide public access to all checkpoints, all code and all wandb dashboards for detailed training and evaluation curves. 
+
+### Wandb Dashboards
+Every model has one wandb project/dashboard, each project will have multiple runs and all of projects should be in the same base structure. For example, Amber project has runs `train`, `downstream_eval` and `perplexity_eval`. The `train` run collects data for training process like loss, learning rate while the others collects data for evaluation. Additionally, we added a `resources` section for Amber project to specifically record the resources related information for anyone who's interested. To quickly find the metric you are looking for, you could use the search bar on the top or/and the filter on the top right.
 
 ## List of Analysis and Metrics
 
