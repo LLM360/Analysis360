@@ -5,24 +5,24 @@ import numpy as np
 # Format  Task_name: [--tasks, --num_fewshot, 'task_specific_args']
 tasks = {
     # knowledge
-    # "mmlu": ["hendrycksTest-*", 5, '-'],
-    # "race": ["race", 0, '-'],
+    "mmlu": ["hendrycksTest-*", 5, '-'],
+    "race": ["race", 0, '-'],
 
     # commonsense reasoning
-    # "hellaswag": ["hellaswag", 10, '-'],
-    # "piqa": ["piqa", 0, '-'],
-    # "boolq": ["boolq", 0, '-'],
-    # "siqa": ["siqa", 0, "-"],
-    # "arc_challenge": ["arc_challenge", 25, '-'],
-    # "openbookqa": ["openbookqa", 0, '-'],
+    "hellaswag": ["hellaswag", 10, '-'],
+    "piqa": ["piqa", 0, '-'],
+    "boolq": ["boolq", 0, '-'],
+    "siqa": ["siqa", 0, "-"],
+    "arc_challenge": ["arc_challenge", 25, '-'],
+    "openbookqa": ["openbookqa", 0, '-'],
     "winogrande": ["winogrande", 5, '-'],
 
     # misinformation, bias
-    # "truthfulqa": ["truthfulqa_mc", 0, '-'],
-    # "crowspairs": ["crows_pairs_english_*", 0, '-'],
+    "truthfulqa": ["truthfulqa_mc", 0, '-'],
+    "crowspairs": ["crows_pairs_english_*", 0, '-'],
 
     # Language & overall
-    #'vicuna80':["vicuna80",0, '--save_eval_examples'],
+    'vicuna80':["vicuna80",0, '--save_eval_examples'],
 }
 
 
