@@ -7,11 +7,12 @@ import numpy as np
 from functools import partial
 
 def visualize():
-    ckpts = sorted(glob('result_*/'))
+    ckpts = sorted(glob('output360/result_*/'))
     all_data = []
     for ckpt in tqdm(ckpts):
-        ckpt = ckpt[7:][:-1]
-        files = glob(f'result_{ckpt}/*.json')
+        print(ckpt)
+        ckpt = ckpt[17:][:-1]
+        files = glob(f'output360/result_{ckpt}/*.json')
         files = sorted(files, key=lambda x: int(re.search(r'result_\d+/(\d+).json', x).group(1)))
         data = []
         for file in tqdm(files):

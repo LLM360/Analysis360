@@ -10,7 +10,7 @@ data_path = "/lustre/home/yi.gu/memorization/sampled_data/{id}.jsonl"
 
 
 
-def evaluate(ckpt_id, data_start, data_end):
+def evaluate(ckpt_id, data_start=0, data_end=360):
     ckpt = ckpt_path.format(id=ckpt_id)
     model: LlamaForCausalLM = AutoModelForCausalLM.from_pretrained(ckpt, use_flash_attention_2=True).to(torch.float16).cuda()
     os.makedirs(f'result_{ckpt_id}', exist_ok=True)
