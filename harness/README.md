@@ -1,13 +1,13 @@
-# MBZUAI LLM Evaluation
+# LLM360 Evaluation
 
 Before running this script, please do `wandb login`.
 
 ```
 cd script
 python evaluate.py\
-    --experiment_ckpt /lustre/scratch/users/william.neiswanger/mbzuai_llm_wikipedia5x_60p/workdir_7b/\
-    --experiment_name eval7b_wikipedia5x_60p \
-    --output_folder ../output/output60p_0shot \
+    --experiment_ckpt /lustre/scratch/users/<home directory>/<model directory>/workdir_7b/\
+    --experiment_name <experiment name> \
+    --output_folder ../output/<output folder> \
     --run_every 5
 ```
 
