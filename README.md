@@ -1,7 +1,7 @@
 # Analysis360: Analyze LLMs in 360 degrees
 
 <div align="center">
-   <img src="./docs/imgs/llm360-big.png" height=50% width=50%><br><br>
+   <img src="./docs/imgs/logo-web250.png"><br><br>
 </div>
 
 ---
