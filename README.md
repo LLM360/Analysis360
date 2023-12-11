@@ -14,7 +14,7 @@
   <a href="https://wandb.ai/llm360/Amber">W&B dashboard [Amber]</a> •
   <a href="https://huggingface.co/LLM360/CrystalCoder">HF [CrystalCoder]</a> •
   <a href="https://wandb.ai/llm360/CrystalCoder">W&B dashboard [CrystalCoder]</a> •
-  <a href="">Publication</a>
+  <a href="">Publication [Coming soon!]</a>
 </p>
 
 **Welcome to Analysis360!**
