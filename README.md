@@ -1,4 +1,4 @@
-# Analysis360: Analyze LLMs in 360 degrees
+<h1 align="center">Analysis360: Analyze LLMs in 360 degrees</h1>
 
 <div align="center">
    <img src="./docs/imgs/logo-web250.png"><br><br>
@@ -10,11 +10,22 @@
    <a href="https://github.com/LLM360/Analysis360/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="license"></a>
 </p>
 <p align="center">
-  <a href="https://huggingface.co/LLM360/Amber">HF [Amber]</a> •
-  <a href="https://wandb.ai/llm360/Amber">W&B dashboard [Amber]</a> •
-  <a href="https://huggingface.co/LLM360/CrystalCoder">HF [CrystalCoder]</a> •
-  <a href="https://wandb.ai/llm360/CrystalCoder">W&B dashboard [CrystalCoder]</a> •
-  <a href="">Publication</a>
+   HuggingFace Repositories 
+  🤗 <a href="https://huggingface.co/LLM360/Amber">[Amber]</a> •
+  🤗 <a href="https://huggingface.co/LLM360/CrystalCoder">[CrystalCoder]</a>
+</p>
+<p align="center">
+  Metrics and charts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  📈 <a href="https://wandb.ai/llm360/Amber"> [Amber]</a> •
+  📈 <a href="https://wandb.ai/llm360/CrystalCoder"> [CrystalCoder]</a>
+</p>
+<p align="center">
+  Publications
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  📃 <a href="">LLM360 Overview</a>
 </p>
 
 **Welcome to Analysis360!**
@@ -57,3 +68,12 @@ Here's a full list of analysis/metrics we have collected so far. For each model 
 | [memorization and token orders analysis](https://arxiv.org/abs/2202.07646) | An analysis to understand model's memorization abilities                                                                                                    |                  [memorization](https://wandb.ai/llm360/Amber/reports/memorization-23-12-06-15-29-48---Vmlldzo2MTg5NjEx)                  |                                                                                                                                                                                                                                            |
 ## How to reproduce our results
 Most of our evaluations are built based on [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)'s core `lm_eval` module. We reused the metrics that were supported by harness and added in our own to support more. Please follow the instructions [here](./harness/README.md) to get started. For any metric that's not included in the harness folder, users should be able to find a dedicated folder for that metric in the root level of the repo and follow the instructions there. Note, we are still working on getting code consolidated and uploaded so please wait for future releases to fill out the missing gaps.
+
+## Citation
+If you are interested in using our results in your work, you can cite the LLM360 overview paper.
+```
+@article{liu2023llm360,
+title={LLM360: Towards Fully Transparent Open-Source LLMs},
+author={Liu, Zhengzhong and Qiao, Aurick and Neiswanger, Willie and Wang, Hongyi and Tan, Bowen and Tao, Tianhua and Li, Junbo and Wang, Yuqi and Sun, Suqi and Pangarkar, Omkar and Fan, Richard and Gu, Yi and Miller, Victor and Zhuang, Yonghao and He, Guowei and Li, Haonan and Koto, Fajri and Tang, Liping and Ranjan, Nikhil and Shen, Zhiqiang and Ren, Xuguang and Iriondo, Roberto and Mu, Cun and Hu, Zhiting and Schulze, Mark and Nakov, Preslav and Baldwin, Tim and Xing, Eric},
+year={2023}}
+```
