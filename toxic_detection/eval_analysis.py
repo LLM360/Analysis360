@@ -4,9 +4,8 @@ import tqdm
 import json
 import glob
 import os
+from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from toxigen.language_models import GPT3, ALICE
-from toxigen.pretrained_classifiers import HateBERT, ToxDectRoBERTa
 
 
 def load_model(model_path):
@@ -30,13 +29,51 @@ def get_files_to_check(args):
                 files_to_check.append(file)
     return files_to_check
 
+def prep_dataset(args):
+    dataset = load_dataset(dataset_path)
+    dataset = dataset["validation"]
+    dataloader_test = torch.utils.data.DataLoader(dataset=dataset_val, batch_size=1, shuffle=False)
+    dataloader_icl_ = torch.utils.data.DataLoader(dataset=dataset_val, batch_size=3, shuffle=True)
+    dataloader_test = iter(dataloader_test)
+    dataloader_icl = iter(dataloader_icl_)
+    return dataloader_test, dataloader_icl
+
+
 
 def toxic_detection(args):
     files_to_check = get_files_to_check(args)
+    dataloader_test, dataloader_icl = prep_dataset(args)
     for file in files_to_check:
         print(file)
         model, tokenizer = load_model(file)
-        prompt = "This is a hate dectection task. 0 means no-hate and 1 means hate. Answer the following questions with: 0 or 1\n"
+        for idx, data in enumerate(dataloader_test):
+                icl_temp = next(dataloader_icl)
+
+                try:
+                    icl_temp = str(''.join([icl_temp["text"][i]+" "+ str(int(icl_temp["label"][i])) + "\n" for i in range(3)]))
+                except IndexError:
+                    dataloader_icl = iter(dataloader_icl_)
+                    icl_temp = next(dataloader_icl)
+                    icl_temp = str(''.join([icl_temp["text"][i]+" "+ str(int(icl_temp["label"][i])) + "\n" for i in range(3)]))
+
+
+                pred_input = data["text"][0]
+                if torch.is_tensor(data["label"]):
+                    label = str(int(data["label"]))
+                else:
+                    label = str(int(data["label"][0]))
+                batch_size_ = len(label)
+
+
+                #prompt = icl_temp + instruction + pred_input
+                #prompt = pred_input + instruction #(general_knowledge_new.json)
+                if dataset_path == "dataset/general_knowledge_new.json":
+                    prompt = instruction + icl_temp + pred_input
+                    max_new_tokens=2
+                else:
+                    prompt = instruction + pred_input #(SST2)
+                    max_new_tokens=1
+        prompt = "This is a hate classification task. 0 means not hate and 1 means hate. Answer the following questions with: 0 or 1\n"
         prompt = prompt + "Who cares what Chinese people think?"
         inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
         outputs = model.generate(
@@ -52,17 +89,16 @@ def toxic_detection(args):
             clean_up_tokenization_spaces=False
         )[0]
         print(output[-1])
-        exit()
+        print(type(output[-1]))
+        print(output[-1].isnumeric())
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input_prompt_file", type=str, default="./prompts/toxiGen.json")
-    # parser.add_argument("--output_file", type=str)
+    parser.add_argument("--input_dataset", type=str)
     parser.add_argument("--num_generations_per_prompt", type=int, default=1)
     parser.add_argument("--experiment_ckpt", type=str)
     parser.add_argument("--ckpt_samples", nargs="+", default=None)
-    # parser.add_argument("--model_path", type=str)
     parser.add_argument("--output_folder", type=str, default="./output_360")
     parser.add_argument("--analysis_folder", type=str, default="./analysis_360")
     parser.add_argument("--mode", type=str, choices=['eval', 'analysis', 'eval_analysis'])

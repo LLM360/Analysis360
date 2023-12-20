@@ -171,8 +171,8 @@ def main():
                         cmd = task_cmd
                         # Slurm runner
                         if args.slurm:
-                            slurm_cmd = f"srun --nodes={args.nodes} --reservation={args.reservation} --partition={args.partition} --ntasks={args.ntasks} --cpus-per-task={args.cpus-per-task}
-                            --gres={args.gres} --mem={args.mem} --output={current_dir}/stdout/slurm-%j.out --job-name={ckpt}_{task}"
+                            slurm_cmd = f"srun --nodes={args.nodes} --reservation={args.reservation} --partition={args.partition} --ntasks={args.ntasks} --cpus-per-task={args.cpus-per-task}"\
+                            "--gres={args.gres} --mem={args.mem} --output={current_dir}/stdout/slurm-%j.out --job-name={ckpt}_{task}"
                             cmd = slurm_cmd + task_cmd + ' &'
                         result = subprocess.run(cmd, shell=True, text=True,)
 
@@ -194,5 +194,5 @@ def main():
                     time.sleep(2000)
 
 
-f __name__ == '__main__':
-    main():
+if __name__ == '__main__':
+    main()

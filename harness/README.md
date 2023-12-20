@@ -5,7 +5,7 @@
 Before running this script, please do `wandb login`.
 
 ```
-cd script
+cd scripts
 python evaluate.py\
     --experiment_ckpt /lustre/scratch/users/<home directory>/<model directory>/workdir_7b/\
     --experiment_name <experiment name> \

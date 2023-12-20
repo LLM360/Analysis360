@@ -1,1 +1,0 @@
-python evaluate.py --experiment_ckpt /lustre/scratch/shared-folders/llm_project/bowen.tan/7b_ckpts --ckpt_samples 35 71 107 143 179 215 251 287 323 --experiment_name 360_yuki_test --output_folder ../output_360
