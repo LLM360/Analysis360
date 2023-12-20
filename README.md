@@ -25,7 +25,8 @@
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  📃 <a href="">LLM360 Overview</a>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  📃 <a href="https://www.llm360.ai/paper.pdf">LLM360 Paper</a>
 </p>
 
 **Welcome to Analysis360!**
