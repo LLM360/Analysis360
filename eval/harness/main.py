@@ -75,7 +75,6 @@ def main():
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    print("initializzing tasks")
     tasks.initialize_tasks(args.verbosity)
 
     assert not args.provide_description  # not implemented
@@ -85,11 +84,9 @@ def main():
             "WARNING: --limit SHOULD ONLY BE USED FOR TESTING. REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT."
         )
 
-    print("tasks initialized")
-
     if args.tasks is None:
         task_names = tasks.ALL_TASKS
-        v0_3_task_names = v0_3_tasks.ALL_TASKS
+        v0_3_tasks_names = v0_3_tasks.ALL_TASKS
     else:
         task_names = pattern_match(args.tasks.split(","), tasks.ALL_TASKS)
         v0_3_task_names = pattern_match(args.tasks.split(","), v0_3_tasks.ALL_TASKS)
@@ -135,7 +132,6 @@ def main():
         raise RuntimeError(f"No tasks found for {args.tasks}")
 
     dumped = json.dumps(results, indent=2)
-    print(dumped)
 
     if args.output_path:
         with open(args.output_path, "w") as f:

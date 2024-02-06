@@ -4,7 +4,6 @@ import os
 import subprocess
 import time
 import wandb
-import tempfile
 
 from collections import defaultdict
 from utils import tasks, extract_all_scores
@@ -187,9 +186,6 @@ def main():
                         # Run Locally
                         device = "cuda"
                         cache_str = f" --use_cache={args.use_cache}" if args.use_cache else ""
-                        #if not args.slurm and "CUDA_VISIBLE_DEVICES" in os.environ:
-                            #visible_devices = os.environ["CUDA_VISIBLE_DEVICES"].split(",")
-                            #device += f':{visible_devices[0]}'
                         task_cmd = f"python {work_dir}/main.py --model {args.model} --model_args pretrained={file} --tasks {task_map} --num_fewshot {num_fewshot} --output_path {out_file}  --device {device} --batch_size 16 --verbosity {args.verbosity}{cache_str}"
                         cmd = task_cmd
                         # Slurm runner
@@ -204,7 +200,7 @@ def main():
                 current_completed_ckpts = get_checkpoints_with_result(f"{args.output_folder}/*")
                 new_ckpts = [int(file.split('/')[-1].split('_')[1]) for file in files_to_check]
                 new_ckpts.sort()
-                if True:#len(set(new_ckpts) - set(current_completed_ckpts)) == 0:
+                if len(set(new_ckpts) - set(current_completed_ckpts)) == 0:
                     # All job is finish, push logs scores to wandb
                     print('All evaluations are finished')
                     for ckpt in new_ckpts:
