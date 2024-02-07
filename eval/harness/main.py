@@ -73,8 +73,6 @@ def main():
     eval_logger.setLevel(getattr(logging, f"{args.verbosity}"))
     eval_logger.info(f"Verbosity set to {args.verbosity}")
 
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-
     tasks.initialize_tasks(args.verbosity)
 
     assert not args.provide_description  # not implemented
@@ -86,7 +84,7 @@ def main():
 
     if args.tasks is None:
         task_names = tasks.ALL_TASKS
-        v0_3_tasks_names = v0_3_tasks.ALL_TASKS
+        v0_3_task_names = v0_3_tasks.ALL_TASKS
     else:
         task_names = pattern_match(args.tasks.split(","), tasks.ALL_TASKS)
         v0_3_task_names = pattern_match(args.tasks.split(","), v0_3_tasks.ALL_TASKS)
