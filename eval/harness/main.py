@@ -90,7 +90,6 @@ def main():
         print(
             "WARNING: --limit SHOULD ONLY BE USED FOR TESTING. REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT."
         )
-    assert (args.log_samples, args.output_path) != (None, None)
 
     if args.tasks is None:
         task_names = tasks.ALL_TASKS
