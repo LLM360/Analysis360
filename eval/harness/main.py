@@ -3,12 +3,20 @@ import json
 import logging
 import fnmatch
 import os
-
-from lm_eval_v0_3 import evaluator as v0_3_evaluator
-from lm_eval_v0_3 import tasks as v0_3_tasks
+import re
+from pathlib import Path
 from lm_eval import tasks, evaluator, utils
 from lm_eval.utils import make_table
 logging.getLogger("openai").setLevel(logging.WARNING)
+
+
+def _handle_non_serializable(o):
+    if isinstance(o, np.int64) or isinstance(o, np.int32):
+        return int(o)
+    elif isinstance(o, set):
+        return list(o)
+    else:
+        return str(o)
 
 
 class MultiChoice:
@@ -38,6 +46,7 @@ def parse_args():
     parser.add_argument("--batch_size", type=str, default=None)
     parser.add_argument("--device", type=str, default=None)
     parser.add_argument("--output_path", default=None)
+    parser.add_argument("--log_samples", default=True)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--save_eval_examples", action="store_true")
     parser.add_argument("--max_eval_examples_per_task", type=int, default=None)
@@ -81,13 +90,12 @@ def main():
         print(
             "WARNING: --limit SHOULD ONLY BE USED FOR TESTING. REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT."
         )
+    assert (args.log_samples, args.output_path) != (None, None)
 
     if args.tasks is None:
         task_names = tasks.ALL_TASKS
-        v0_3_task_names = v0_3_tasks.ALL_TASKS
     else:
         task_names = pattern_match(args.tasks.split(","), tasks.ALL_TASKS)
-        v0_3_task_names = pattern_match(args.tasks.split(","), v0_3_tasks.ALL_TASKS)
 
     if task_names:
         results = evaluator.simple_evaluate(
@@ -99,50 +107,39 @@ def main():
             device=args.device,
             use_cache=args.use_cache,
             limit=args.limit,
+            log_samples=args.log_samples,
             #description_dict=description_dict,
-            decontamination_ngrams_path=args.decontamination_ngrams_path,
-            check_integrity=args.check_integrity,
-        )
-    elif v0_3_task_names:
-        description_dict = {}
-        if args.description_dict_path:
-            with open(args.description_dict_path, "r") as f:
-                description_dict = json.load(f)
-        if args.model == "vllm":
-            model = "hf-causal-experimental"
-            print('cannot use vllm with the old lm-eval harness. Replacing with "hf-causal-experimental".')
-        else:
-            model = args.model
-        results = v0_3_evaluator.simple_evaluate(
-            model=model,
-            model_args=args.model_args,
-            tasks=v0_3_task_names,
-            num_fewshot=args.num_fewshot,
-            batch_size=args.batch_size,
-            device=args.device,
-            no_cache=not(args.use_cache),
-            limit=args.limit,
-            description_dict=description_dict,
             decontamination_ngrams_path=args.decontamination_ngrams_path,
             check_integrity=args.check_integrity,
         )
     else:
         raise RuntimeError(f"No tasks found for {args.tasks}")
 
+    if args.log_samples:
+        samples = results.pop("samples")
     dumped = json.dumps(results, indent=2)
 
     if args.output_path:
         with open(args.output_path, "w") as f:
             f.write(dumped)
-
+        if args.log_samples:
+            for task_name, config in results["configs"].items():
+                output_name = "{}_{}".format(
+                    re.sub("/|=", "__", args.model_args), task_name
+                )
+                output_path = Path(args.output_path).parent.joinpath(f"{output_name}.jsonl")
+                samples_dumped = json.dumps(
+                    samples[task_name],
+                    indent=2,
+                    default=_handle_non_serializable,
+                    ensure_ascii=False,
+                )
+                output_path.open("w", encoding='utf-8').write(samples_dumped)
     print(
         f"{args.model} ({args.model_args}), limit: {args.limit}, provide_description: {args.provide_description}, "
         f"num_fewshot: {args.num_fewshot}, batch_size: {args.batch_size}"
     )
-    if task_names:
-        print(make_table(results))
-    else:
-        print(v0_3_evaluator.make_table(results))
+    print(make_table(results))
 
 
 if __name__ == "__main__":

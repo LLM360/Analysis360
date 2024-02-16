@@ -42,6 +42,10 @@ def parse_args():
         default=5,
     )
     parser.add_argument(
+        "--log_samples",
+        action="store_true"
+    )
+    parser.add_argument(
         "--use_cache",
         default=None)
     parser.add_argument(
@@ -101,9 +105,10 @@ def parse_slurm_args(slurm_parser):
 def get_checkpoints_with_result(path):
     ckpts = defaultdict(list)
     for file in glob.glob(path):
-        ckpt = int(file.split('/')[-1].split('_')[0])
-        task = file.split('/')[-1].split('_')[1]
-        ckpts[ckpt].append(task)
+        if file.split('/')[-1].split('_')[0].isdigit():
+            ckpt = int(file.split('/')[-1].split('_')[0])
+            task = file.split('/')[-1].split('_')[1]
+            ckpts[ckpt].append(task)
     final_ckpts = []
     for key in ckpts.keys():
         if len(ckpts[key]) == 11:
@@ -187,6 +192,8 @@ def main():
                         device = "cuda"
                         cache_str = f" --use_cache={args.use_cache}" if args.use_cache else ""
                         task_cmd = f"python {work_dir}/main.py --model {args.model} --model_args pretrained={file} --tasks {task_map} --num_fewshot {num_fewshot} --output_path {out_file}  --device {device} --batch_size 16 --verbosity {args.verbosity}{cache_str}"
+                        if args.log_samples:
+                            task_cmd += " --log_samples"
                         cmd = task_cmd
                         # Slurm runner
                         if args.slurm:
@@ -198,7 +205,8 @@ def main():
             # check if the run is all complete
             while (True):
                 current_completed_ckpts = get_checkpoints_with_result(f"{args.output_folder}/*")
-                new_ckpts = [int(file.split('/')[-1].split('_')[1]) for file in files_to_check]
+
+                new_ckpts = [int(file.split('/')[-1].split('_')[1]) for file in files_to_check if (file.split('/')[-1].split('_')[1].isdigit())]
                 new_ckpts.sort()
                 if len(set(new_ckpts) - set(current_completed_ckpts)) == 0:
                     # All job is finish, push logs scores to wandb
