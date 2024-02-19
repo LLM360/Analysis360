@@ -4,11 +4,11 @@ import numpy as np
 
 # Format  Task_name: [--tasks, --num_fewshot, 'task_specific_args']
 tasks = {
-#    # knowledge
-    "mmlu": ["hendrycksTest-*", 5, '-'],
+    # knowledge
+    "mmlu": ["mmlu_*", 5, '-'],
     "race": ["race", 0, '-'],
-#
-#    # commonsense reasoning
+
+    # commonsense reasoning
     "hellaswag": ["hellaswag", 10, '-'],
     "piqa": ["piqa", 0, '-'],
     "boolq": ["boolq", 0, '-'],
@@ -28,82 +28,82 @@ tasks = {
 
 mmlu_subject_groups = {
     'math': [
-        'hendrycksTest-abstract_algebra',
-        'hendrycksTest-college_mathematics',
-        'hendrycksTest-elementary_mathematics',
-        'hendrycksTest-formal_logic',
-        'hendrycksTest-high_school_mathematics',
-        'hendrycksTest-high_school_statistics',   
+        'mmlu_abstract_algebra',
+        'mmlu_college_mathematics',
+        'mmlu_elementary_mathematics',
+        'mmlu_formal_logic',
+        'mmlu_high_school_mathematics',
+        'mmlu_high_school_statistics',   
     ],
     'computer_science': [
-        'hendrycksTest-college_computer_science',
-        'hendrycksTest-computer_security',
-        'hendrycksTest-high_school_computer_science',
-        'hendrycksTest-machine_learning' 
+        'mmlu_college_computer_science',
+        'mmlu_computer_security',
+        'mmlu_high_school_computer_science',
+        'mmlu_machine_learning' 
     ],
     'medical': [
-        'hendrycksTest-anatomy',
-        'hendrycksTest-clinical_knowledge',
-        'hendrycksTest-college_biology',
-        'hendrycksTest-college_medicine',
-        'hendrycksTest-high_school_biology',
-        'hendrycksTest-human_aging',
-        'hendrycksTest-medical_genetics',
-        'hendrycksTest-nutrition',
-        'hendrycksTest-professional_medicine',
-        'hendrycksTest-virology',
+        'mmlu_anatomy',
+        'mmlu_clinical_knowledge',
+        'mmlu_college_biology',
+        'mmlu_college_medicine',
+        'mmlu_high_school_biology',
+        'mmlu_human_aging',
+        'mmlu_medical_genetics',
+        'mmlu_nutrition',
+        'mmlu_professional_medicine',
+        'mmlu_virology',
     ],
     'physics': [
-        'hendrycksTest-astronomy',
-        'hendrycksTest-college_physics',
-        'hendrycksTest-conceptual_physics',
-        'hendrycksTest-electrical_engineering',
-        'hendrycksTest-high_school_physics'
+        'mmlu_astronomy',
+        'mmlu_college_physics',
+        'mmlu_conceptual_physics',
+        'mmlu_electrical_engineering',
+        'mmlu_high_school_physics'
     ],
     'chemistry': [
-        'hendrycksTest-college_chemistry',
-        'hendrycksTest-high_school_chemistry',
+        'mmlu_college_chemistry',
+        'mmlu_high_school_chemistry',
     ],
     'economic_business': [
-        'hendrycksTest-business_ethics',
-        'hendrycksTest-econometrics',
-        'hendrycksTest-high_school_macroeconomics',
-        'hendrycksTest-high_school_microeconomics',
-        'hendrycksTest-management',
-        'hendrycksTest-marketing',
-        'hendrycksTest-professional_accounting'
+        'mmlu_business_ethics',
+        'mmlu_econometrics',
+        'mmlu_high_school_macroeconomics',
+        'mmlu_high_school_microeconomics',
+        'mmlu_management',
+        'mmlu_marketing',
+        'mmlu_professional_accounting'
     ],
     'history_and_general': [
-        'hendrycksTest-global_facts',
-        'hendrycksTest-high_school_european_history',
-        'hendrycksTest-high_school_us_history',
-        'hendrycksTest-high_school_world_history',
-        'hendrycksTest-prehistory',
-        'hendrycksTest-world_religions'
+        'mmlu_global_facts',
+        'mmlu_high_school_european_history',
+        'mmlu_high_school_us_history',
+        'mmlu_high_school_world_history',
+        'mmlu_prehistory',
+        'mmlu_world_religions'
     ],
     'phsychology': [
-        'hendrycksTest-high_school_psychology',
-        'hendrycksTest-human_sexuality',
-        'hendrycksTest-professional_psychology',
+        'mmlu_high_school_psychology',
+        'mmlu_human_sexuality',
+        'mmlu_professional_psychology',
     ],
     'sociology': [
-        'hendrycksTest-public_relations',
-        'hendrycksTest-sociology',
+        'mmlu_public_relations',
+        'mmlu_sociology',
     ],
     'legal_gov': [
-        'hendrycksTest-high_school_government_and_politics',
-        'hendrycksTest-international_law',
-        'hendrycksTest-jurisprudence',
-        'hendrycksTest-moral_disputes',
-        'hendrycksTest-moral_scenarios',
-        'hendrycksTest-professional_law',
-        'hendrycksTest-us_foreign_policy'
+        'mmlu_high_school_government_and_politics',
+        'mmlu_international_law',
+        'mmlu_jurisprudence',
+        'mmlu_moral_disputes',
+        'mmlu_moral_scenarios',
+        'mmlu_professional_law',
+        'mmlu_us_foreign_policy'
     ],
     'other': [
-        'hendrycksTest-logical_fallacies',
-        'hendrycksTest-miscellaneous',
-        'hendrycksTest-philosophy',
-        'hendrycksTest-security_studies'
+        'mmlu_logical_fallacies',
+        'mmlu_miscellaneous',
+        'mmlu_philosophy',
+        'mmlu_security_studies'
     ]
 }
 
