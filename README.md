@@ -32,7 +32,9 @@
 **Welcome to Analysis360!**
 <br/>
 
-This repo contains all of the code that we used for model evaluation and analysis. It serves as the single source of truth for all evaluation metrics and provides in-depth analysis from many different angles. Feel free to click on the links above to have a quick glance around the LLM360 project and experiments' data.
+This repo contains all of the code that we used for model evaluation. And we are in the progress of developing and adding LLM360 analysis.
+
+This readme serves as the pointers to evaluation metrics plotted on our W&B page. Feel free to click on the links above to have a quick glance around the LLM360 project and experiments' data.
 
 ## Our Approach 
 
