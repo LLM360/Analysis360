@@ -26,7 +26,7 @@ your issue, please give a description of how to reproduce the bug.
 # Request a Feature
 
 For any feature request, submit an issue with [Feature Request] in the title.
-As part of the issue, describe why this would be beneficial for the toolbox and
+As part of the issue, describe why this would be beneficial for the repo and
 give an example use case of how the feature would be used.
 
 # Maintainers
