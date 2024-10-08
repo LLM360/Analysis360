@@ -4,9 +4,9 @@ We welcome and greatly appreciate contributions from the community! You can
 help make Analysis360 even better by either
 
 1. [Creating a PR](#create-a-pr) to fix a bug or add functionality.
-2. [Reporting a bug](#report-a-bug) that you found in the toolbox.
+2. [Reporting a bug](#report-a-bug) that you found in the repo.
 3. [Requesting a feature](#request-a-feature) that you would like to
-   see in the toolbox.
+   see in the repo.
 
 # Create a PR
 
