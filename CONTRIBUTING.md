@@ -12,7 +12,7 @@ help make Analysis360 even better by either
 
 To create a PR:
 
-1. Submit a PR to the [main branch](https://github.com/willieneis/Analysis360-mirror/tree/main).
+1. Submit a PR to the [main branch](https://github.com/LLM360/Analysis360/tree/main).
    If your PR fixes a bug, detail what the problem was and how it was fixed.
    If your PR adds code, include justification for why this code should be added.
 2. Please allow maintainers to edit your pull request by following [these instructions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
